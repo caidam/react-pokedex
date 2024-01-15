@@ -1,8 +1,13 @@
-function NavBar({ pokemonIndex, handlePreviousClick, handleNextClick, pokemonListLength }) {
+import React from 'react';
+
+function NavBar({ pokemonList, setPokemonIndex }) {
     return (
         <div>
-            {pokemonIndex > 0 && <button onClick={handlePreviousClick}>Previous</button>}
-            {pokemonIndex < pokemonListLength - 1 && <button onClick={handleNextClick}>Next</button>}
+            {pokemonList.map((pokemon, index) => (
+                <button key={pokemon.name} onClick={() => setPokemonIndex(index)}>
+                    {pokemon.name}
+                </button>
+            ))}
         </div>
     );
 }
